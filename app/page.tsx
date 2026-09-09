@@ -73,7 +73,7 @@ export default function Page() {
         <div className="hero-copy">
           <p className="eyebrow">Private companionship & wellness</p>
           <h1>Good company,<br /><em>beautifully considered.</em></h1>
-          <p className="hero-intro">Companios creates thoughtful, discreet experiences for people who value presence, conversation, and a sense of ease. From a meaningful evening out to a restorative wellness appointment, we make time together feel natural.</p>
+          <p className="hero-intro">Companios creates thoughtful, discreet experiences for people in Bhopal who value presence, conversation, and a sense of ease. From a meaningful evening out to a restorative wellness appointment, we make time together feel natural.</p>
           <a className="text-link" href="#contact">Make an enquiry <ArrowUpRight aria-hidden="true" /></a>
         </div>
         <div className="hero-image-wrap">
