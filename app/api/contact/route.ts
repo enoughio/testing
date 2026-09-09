@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
-const recipient = 'hello.bookaman@gmail.com'
+const defaultRecipient = 'hello.bookaman@gmail.com'
 const maxLengths = { name: 120, email: 254, message: 4000 }
 
 function isValidEmail(value: string) {
@@ -22,6 +22,7 @@ export async function POST(request: Request) {
     }
 
     const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env
+    const recipient = process.env.CONTACT_RECIPIENT || defaultRecipient
     if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS) {
       console.error('[v0] SMTP configuration is incomplete')
       return NextResponse.json({ error: 'Email service is temporarily unavailable.' }, { status: 503 })
@@ -35,7 +36,7 @@ export async function POST(request: Request) {
     })
 
     await transporter.sendMail({
-      from: 'hello.bookaman@gmail.com',
+      from: SMTP_USER,
       to: recipient,
       replyTo: email,
       subject: `New Companios enquiry from ${name}`,
